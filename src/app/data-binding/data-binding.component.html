@@ -1,0 +1,31 @@
+<form
+[formGroup]="findData"
+(ngSubmit)="onFindData()"
+>
+<label for="search">Enter a search term</label>
+<input
+    formControlName = "search"
+    type="text"
+    name="search"
+    required
+>
+<label for="searching">What:</label>
+<select
+    formControlName = "searching"
+    name = "searching"
+    required
+>
+<option
+ *ngFor="let a of api"
+ value="{{ a }}">{{ a }}</option>
+</select>
+
+<button type="submit">Submit</button>
+</form>
+
+<div *ngIf="data.length !== 0; else noData">
+    <app-display-info
+    *ngFor="let Data of data"
+    [Data]="Data"
+    ></app-display-info>
+</div>
